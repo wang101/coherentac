@@ -1,4 +1,5 @@
-Generate Auto-correlation (Fast mode)
+Autocorrelation
+
 
 * 设定角度
 ```
@@ -16,11 +17,17 @@ Generate Auto-correlation (Fast mode)
 * 开始模拟
 
 将file_pdb拷贝或链接到目录下（root的父目录）
+
 调整模拟选项：修改`jobfast.py`文件。
+
 其中`n_proc`是每一个complex的CPU核数
+
 `n_angles`是每一个complex的orientation的数目，最好是`n_proc`的整倍数。
+
 `start1`是task.input 中angle行起始的行号 (一般不需修改)
+
 `nlst1`是complex的标号集合，例如，计算`c0.pdb`、`c136.pdb`、`c1485.pdb`、`c625.pdb`则： nlst1 = [0,136,1485,625]
+
 运行则产生pm/pn/ 目录。 其中m是complex 编号，n是运行批次，n最大为`n_proc`
 ```
 	python jobfast.py
@@ -41,8 +48,11 @@ Generate Auto-correlation (Fast mode)
 * 生成相干图
 
 修改`1patt.py`文件中的`shift`（平移量）、 `inds`（干涉所用的orientation的编号）、coherent的参数。
+
 这里为了使得coherent和 noncoherent的数据有可比性，两个数据使用的平移量都一致，编号都是按一定规律生成的。
+
 coherent函数定义：coherent(相干粒子数, orientation数, 散射图文件名)。文件名默认以命令行参数形式传入，方便`jobcoherent.py`调用。
+
 修改`jobcoherent.py`文件中的`nlst1`，应和`jobfast.py`中一致。
 ```
 	python jobcoherent.py
@@ -68,8 +78,9 @@ coherent函数定义：coherent(相干粒子数, orientation数, 散射图文件
 	mkdir 5co
 	mv 5co_lstc* ./5co
 ```
-画图，移动到`ac`目录下。
-修改`draw.py`参数，`hstd`是比较标准，h1是对比的coherent，h2是对比的non-coherent。运行`draw.py`会做出相关系数关于对比个数的关系图。蓝色为coherent，绿色为non-coherent。
+画图，进入`ac`目录。
+
+修改`draw.py`参数，`hstd`是比较标准，`h1`是对比的coherent，`h2`是对比的non-coherent。运行`draw.py`会做出相关系数关于对比个数的关系图。蓝色为coherent，绿色为non-coherent。
 
 		
 		
