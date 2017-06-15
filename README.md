@@ -15,13 +15,13 @@ Generate Auto-correlation (Fast mode)
 
 * 开始模拟
 
-		将file_pdb拷贝或链接到目录下（root的父目录）
-		调整模拟选项：修改`jobfast.py`文件。
-		其中`n_proc`是每一个complex的CPU核数
-		`n_angles`是每一个complex的orientation的数目，最好是`n_proc`的整倍数。
-		`start1`是task.input 中angle行起始的行号 (一般不需修改)
-		`nlst1`是complex的标号集合，例如，计算`c0.pdb`、`c136.pdb`、`c1485.pdb`、`c625.pdb`则： nlst1 = [0,136,1485,625]
-		运行则产生pm/pn/ 目录。 其中m是complex 编号，n是运行批次，n最大为`n_proc`
+将file_pdb拷贝或链接到目录下（root的父目录）
+调整模拟选项：修改`jobfast.py`文件。
+其中`n_proc`是每一个complex的CPU核数
+`n_angles`是每一个complex的orientation的数目，最好是`n_proc`的整倍数。
+`start1`是task.input 中angle行起始的行号 (一般不需修改)
+`nlst1`是complex的标号集合，例如，计算`c0.pdb`、`c136.pdb`、`c1485.pdb`、`c625.pdb`则： nlst1 = [0,136,1485,625]
+运行则产生pm/pn/ 目录。 其中m是complex 编号，n是运行批次，n最大为`n_proc`
 ```
 	python jobfast.py
 ```
